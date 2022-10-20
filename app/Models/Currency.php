@@ -15,8 +15,8 @@ class Currency extends Model
     protected function exchangeRate(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $value / 1000,
-            set: fn($value) => $value * 1000,
+            get: fn($value) => $value / 100000000,
+            set: fn($value) => $value * 100000000,
         );
     }
 }

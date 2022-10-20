@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\CurrencyController::class, 'index']);
 
 Route::name('currency.')->prefix('currency')->group(function () {
-    Route::get('/update_exchange_rate', [\App\Http\Controllers\CurrencyController::class, 'updateExchangeRates']);
+    Route::get('/update_exchange_rate', [\App\Http\Controllers\CurrencyController::class, 'updateExchangeRates'])->name('updateExchangeRates');
 });
 
 Route::name('api.')->prefix('api')->group(function () {

@@ -14,7 +14,7 @@ class CurrencyController extends Controller
     {
         $currencies = Currency::all();
 
-        return $currencies;
+        return view('index', compact('currencies'));
     }
 
     public function updateExchangeRates()
@@ -22,10 +22,9 @@ class CurrencyController extends Controller
         $currencyRepo = new CurrencyRepository();
         try {
             $currencyRepo->updateExchangeRates();
-
         } catch (\Exception $ex) {
-            return false;
+            return redirect()->back()->with(['error' => true]);
         }
-        return true;
+        return redirect()->back()->with(['success' => true]);
     }
 }

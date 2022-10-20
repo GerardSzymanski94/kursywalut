@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::name('api.')->prefix('api')->group(function () {
+    Route::get('/get_exchange_rate_data', [\App\Http\Controllers\Api\CurrencyController::class, 'getExchangeRateData']);
+});
+

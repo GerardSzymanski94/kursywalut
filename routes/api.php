@@ -1,5 +1,6 @@
 <?php
 
+use App\Repositories\CurrencyRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::name('currency.')->prefix('currency')->group(function () {
+    Route::get('/all', function () {
+        return new \App\Http\Resources\CurrencyCollection(\App\Models\Currency::all());
+    });
+    Route::get('/update', function () {
+        $currencyRepo = new CurrencyRepository();
+        return $currencyRepo->updateExchangeRates();
+    });
+
 });

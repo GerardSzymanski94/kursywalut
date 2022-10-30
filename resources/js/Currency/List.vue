@@ -56,9 +56,9 @@ export default {
     methods: {
         updateCurrencies() {
             console.log('start');
-            axios.get("/api/currency/update").then().catch(error => {
+            axios.get("/api/currency/update").then(() => this.msg_success = true).catch(error => {
                 this.msg_error = true
-            }).finally(() => this.msg_success = true);
+            }).finally();
         }
     }
 };
